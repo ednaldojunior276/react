@@ -1,42 +1,39 @@
-import './App.css';
-import Pessoa from './Components/Pessoa';
-import List from './Components/List';
-import Eventos from './Components/Eventos';
-import Form from './Components/Form';
-import Condicional from './Components/Condicional';
-import Lista from './Components/Lista';
-
-import {BrowserRouter as Router, Switch, Router, Link } from 'react-router-dom'
-
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
+import Home from './pages/Home';
+import Contato from './pages/Contato';
+import Empresa from './pages/Empresa';
 
 function App() {
-  
-  const nome = "IDENTIDADE"
-
-  const meusitens = ["OI"]
   return (
-  
-  
-   <div className="App">
-     <h2>Listaa </h2>
-
-     
-     <Lista  itens = {meusitens}/> 
-   <h3>Condicional </h3> 
-   <Condicional />
-    <p> {nome} </p>
-    <Pessoa 
-      id = "1234586"
-      nome = "ednaldo"
-      idade = "30"
-      profissao = "tec telecom"
-
-    />
-    <List />
-    <Eventos idade = {24} nome = "EDNALDO"/>
-    <Form />
-   </div>
-   
+      <div className="App">
+        <Router>
+            <ul>
+              <li>
+                <Link to = "/">HOME</Link> 
+              </li>  
+            
+              <li>
+                <Link to = "/empresa">EMPRESA</Link> 
+              </li>  
+            
+              <li>
+                <Link to = "/contato">CONTATO</Link> 
+              </li>  
+            </ul>  
+      
+            <Routes>
+                <Route exact path = "/" element ={<Home />}>
+               
+                </Route>
+                <Route path = "/empresa" element = {<Empresa />}>
+              
+                </Route>
+                <Route path = "/contato" element = {<Contato />}>
+                  
+                </Route>
+            </Routes>
+          </Router>
+      </div>
   );
 }
 
